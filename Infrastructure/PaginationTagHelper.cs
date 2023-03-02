@@ -27,7 +27,6 @@ namespace Mission9_twilso48.Models.Infrastructure
         [HtmlAttributeNotBound]
 
 
-
         public ViewContext vc { get; set; }
 
         //different than view context
