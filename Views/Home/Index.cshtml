@@ -1,11 +1,11 @@
 ﻿@{
 }
 
-@model IQueryable<Books> 
+@model BooksViewModel
 
 <h1>BookStore</h1>
 
-@foreach(Books b in Model)
+@foreach(Books b in Model.Books)
     {
     <h3>@b.Title </h3>
 
@@ -18,13 +18,12 @@
         <li>Page Count: @b.PageCount</li>
         <li>Price: @b.Price</li>
 
-
     </ul>
         
-
     }
 
 <a asp-action="Index" asp-route="1">1</a>
 <a asp-action="Index" asp-route="2">2</a>
 <a asp-action="Index" asp-route="3">3</a>
 
+<div page-blah="@Model.PageInfo"></div>

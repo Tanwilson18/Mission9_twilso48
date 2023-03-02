@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Mission9_twilso48.Models;
+using Mission9_twilso48.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,22 @@ namespace Mission9_twilso48.Controllers
         {
             int pageSize = 5;
 
-            var blah = repo.Books
+            var x = new BooksViewModel
+            {
+                Books = repo.Books
                 .OrderBy(b => b.Title)
-                .Skip((pageNum-1) * pageSize)
-                .Take(pageSize);
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
 
+                PageInfo = new PageInfo
+                {
+                    totalNumTitles = repo.Books.Count(),
+                    booksPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
 
-            return View(blah);
+            return View(x);
         }
     }
 }
