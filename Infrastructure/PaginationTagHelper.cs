@@ -29,6 +29,7 @@ namespace Mission9_twilso48.Models.Infrastructure
 
         //different than view context
         public PageInfo pageBlah { get; set;}
+        public string PageAction { get; set; }
         public override void Process(TagHelperContext thc, TagHelperOutput tho)
         {
             IUrlHelper uh = uhf.GetUrlHelper(vc);
@@ -39,8 +40,13 @@ namespace Mission9_twilso48.Models.Infrastructure
             {
                 TagBuilder tb = new TagBuilder("a");
 
-                tb.Attributes["href"] = 
+                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
+                tb.InnerHtml.Append(i.ToString());
+
+                final.InnerHtml.AppendHtml(tb);
             }
+
+            tho.Content.AppendHtml(final.InnerHtml);
 
         }
     }
