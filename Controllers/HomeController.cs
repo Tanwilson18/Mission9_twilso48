@@ -9,10 +9,16 @@ namespace Mission9_twilso48.Controllers
 {
     public class HomeController : Controller
     {
+        private IBookstoreRepo repo;
+
+        public HomeController(IBookstoreRepo temp)
+        {
+            repo = temp;
+        }
         
         public IActionResult Index()
         {
-            var blah = context.Books.ToList();
+            var blah = repo.Books.ToList();
 
             return View(blah);
         }
