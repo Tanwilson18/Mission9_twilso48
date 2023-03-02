@@ -43,7 +43,7 @@ namespace Mission9_twilso48.Models.Infrastructure
             TagBuilder final = new TagBuilder("div");
 
             //loop to get number of pages and to help switch betwwen pages
-            for (int i = 1; i < pageBlah.TotalPages; i++)
+            for (int i = 1; i <= pageBlah.TotalPages; i++)
             {
                 TagBuilder tb = new TagBuilder("a");
 
