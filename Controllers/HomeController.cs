@@ -17,6 +17,7 @@ namespace Mission9_twilso48.Controllers
             repo = temp;
         }
         
+        //displays the amount of results per page
         public IActionResult Index(int pageNum = 1)
         {
             int pageSize = 10;
