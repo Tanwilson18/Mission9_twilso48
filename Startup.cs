@@ -52,6 +52,12 @@ namespace Mission9_twilso48
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "{pageNum}",
+                    defaults: new { Controller = "Home", action = "Index" }
+                    );
+
                 endpoints.MapDefaultControllerRoute();
             });
         }
