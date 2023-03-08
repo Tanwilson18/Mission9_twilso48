@@ -21,8 +21,18 @@
     <div class="card-text p-1">Number of Pages: @Model.PageCount</div>
 
 
-</div>
 
+    <form method="post" asp-page="/Buy">
+
+        <input type="hidden" asp-for="@Model.BookId" />
+
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm float-end">Purchase</button>
+        </span>
+
+    </form>
+
+</div>
 
 
 

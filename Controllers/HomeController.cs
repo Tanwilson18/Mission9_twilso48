@@ -32,7 +32,10 @@ namespace Mission9_twilso48.Controllers
 
                 PageInfo = new PageInfo
                 {
-                    totalNumTitles = repo.Books.Count(),
+                    totalNumTitles = 
+                    (bookType == null 
+                    ?repo.Books.Count() 
+                    : repo.Books.Where(x => x.Category == bookType).Count()),
                     booksPerPage = pageSize,
                     CurrentPage = pageNum
                 }

@@ -34,6 +34,11 @@ namespace Mission9_twilso48
             });
 
             services.AddScoped<IBookstoreRepo, EFBookstoreRepo>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +52,8 @@ namespace Mission9_twilso48
             // corresponds to wwwroot
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
@@ -67,6 +74,8 @@ namespace Mission9_twilso48
 
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }

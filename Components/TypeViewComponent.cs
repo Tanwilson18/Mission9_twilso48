@@ -19,6 +19,8 @@ namespace Mission9_twilso48.Components
 
         public IViewComponentResult Invoke()
         {
+            ViewBag.SelectedType = RouteData?.Values["bookType"];
+
             var types = repo.Books
                 .Select(x => x.Category)
                 .Distinct()
