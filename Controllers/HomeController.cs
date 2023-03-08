@@ -25,7 +25,7 @@ namespace Mission9_twilso48.Controllers
             var x = new BooksViewModel
             {
                 Books = repo.Books
-                .Where(p => p.Category == bookType)
+                .Where(b => b.Category == bookType || bookType == null)
                 .OrderBy(b => b.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
