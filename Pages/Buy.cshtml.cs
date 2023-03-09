@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Mission9_twilso48.Infrastructure;
 using Mission9_twilso48.Models;
 
 namespace Mission9_twilso48.Pages
@@ -19,21 +20,26 @@ namespace Mission9_twilso48.Pages
         }
 
         public Basket basket { get; set; }
+        public string ReturnUrl { get; set; }
 
-        public void OnGet(Basket b)
+        public void OnGet(string returnurl)
         {
-            basket = b;
+            ReturnUrl = returnurl ?? "/";
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
 
-        public IActionResult OnPost(int BookId)
+        public IActionResult OnPost(int BookId, string returnurl)
         {
             Books b = repo.Books.FirstOrDefault(x => x.BookId == BookId);
 
             //new instance
-            basket = new Basket();
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             basket.AddItem(b, 1);
 
-            return RedirectToPage(basket);
+
+            HttpContext.Session.SetJson("basket", basket);
+
+            return RedirectToPage(new { ReturnUrl = returnurl });
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Mission9_twilso48.Infrastructure
 {
     public static class SessionExtensions
     {
-        public static void session (this ISession session, string key, object value)
+        public static void SetJson (this ISession session, string key, object value)
         {
             session.SetString(key, JsonSerializer.Serialize(value));
         }
