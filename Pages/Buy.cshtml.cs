@@ -13,19 +13,20 @@ namespace Mission9_twilso48.Pages
     {
         private IBookstoreRepo repo { get; set; }
 
-        // constructor 
-        public BuyModel (IBookstoreRepo temp)
-        {
-            repo = temp;
-        }
-
         public Basket basket { get; set; }
         public string ReturnUrl { get; set; }
+
+
+        // constructor 
+        public BuyModel (IBookstoreRepo temp, Basket bask)
+        {
+            repo = temp;
+            basket = bask;
+        }
 
         public void OnGet(string returnurl)
         {
             ReturnUrl = returnurl ?? "/";
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
 
         public IActionResult OnPost(int BookId, string returnurl)
@@ -33,13 +34,17 @@ namespace Mission9_twilso48.Pages
             Books b = repo.Books.FirstOrDefault(x => x.BookId == BookId);
 
             //new instance
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             basket.AddItem(b, 1);
 
 
-            HttpContext.Session.SetJson("basket", basket);
-
             return RedirectToPage(new { ReturnUrl = returnurl });
+        }
+        public IActionResult OnPostRemove(int BookId, string returnUrl)
+        {
+            basket.RemoveItem(basket.Items.First(x => x.Book.BookId == BookId).Book);
+
+            return RedirectToPage(new { ReturnUrl = returnUrl });
         }
     }
 }
+ 
