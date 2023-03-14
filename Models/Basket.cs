@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -51,6 +52,7 @@ namespace Mission9_twilso48.Models
 
     public class BasketLineItem
     {
+        [Key]
         public int LineID { get; set; }
         public Books Book { get; set;}
 
