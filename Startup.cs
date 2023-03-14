@@ -34,6 +34,7 @@ namespace Mission9_twilso48
             });
 
             services.AddScoped<IBookstoreRepo, EFBookstoreRepo>();
+            services.AddScoped<ICheckOutRepo, EFCheckoutRepo>();
 
             services.AddRazorPages();
 

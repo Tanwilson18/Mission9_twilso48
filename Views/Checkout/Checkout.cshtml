@@ -6,7 +6,9 @@
 <h2>Check out now</h2> 
 <p>Hi buddy, please enter your information</p>
 
-<form method="post">
+<form method="post"asp-controller="Checkout" asp-action="Checkout" >
+
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <h4>Ship to:</h4>
 
@@ -46,7 +48,8 @@
         <label asp-for="Country">Country:</label>
         <input asp-for="Country" class="form-control" />
     </div>
+    <br />
     <div class="float-end">
-        <input class="btn btn-primary" type="submit" value="Sumbit Checkout"/>
+        <input class="btn btn-primary" type="submit" value="Sumbit Checkout" />
     </div>
 </form>
