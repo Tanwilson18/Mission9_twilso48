@@ -78,6 +78,7 @@ namespace Mission9_twilso48
                     new { Controller = "Home", action = "Index", pageNum = 1 });
 
 
+
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
