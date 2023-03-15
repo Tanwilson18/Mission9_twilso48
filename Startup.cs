@@ -71,7 +71,7 @@ namespace Mission9_twilso48
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "{pageNum}",
-                    defaults: new { Controller = "Home", action = "Index" }
+                    defaults: new { Controller = "Home", action = "Index"}
                     );
 
                 endpoints.MapControllerRoute("type", "{bookType}",
