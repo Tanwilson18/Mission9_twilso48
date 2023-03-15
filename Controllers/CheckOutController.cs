@@ -36,7 +36,7 @@ namespace Mission9_twilso48.Controllers
                 repo.SaveCheckout(checkoutTemp);
                 basket.ClearBasket();
 
-                return View();
+                return RedirectToPage ("/CheckoutCompleted");
             }
             else
             {
